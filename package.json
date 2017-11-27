@@ -1,0 +1,28 @@
+{
+  "name": "anygate",
+  "version": "1.0.0",
+  "description": "🚪🚪 learn to build a tiny node static web server",
+  "main": "src/app.js",
+  "bin": {
+    "anygate": "bin/anygate"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
+  },
+  "pre-commit": {
+    "fix",
+    "lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanwarke/anygate.git"
+  },
+  "author": "ivanwarke",
+  "email": "iveon.cc@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanwarke/anygate/issues"
+  },
+  "homepage": "https://github.com/ivanwarke/anygate#readme"
+}
