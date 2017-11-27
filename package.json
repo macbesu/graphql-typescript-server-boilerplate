@@ -11,8 +11,7 @@
     "fix": "eslint --fix ."
   },
   "pre-commit": [
-    "fix",
-    "lint"
+
   ],
   "repository": {
     "type": "git",
@@ -26,11 +25,13 @@
   },
   "homepage": "https://github.com/ivanwarke/anygate#readme",
   "dependencies": {
-    "babel-eslint": "^8.0.2",
     "chalk": "^2.3.0",
-    "eslint": "^4.12.0",
     "handlebars": "^4.0.11",
-    "pre-commit": "^1.2.2",
     "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.12.0",
+    "pre-commit": "^1.2.2"
   }
 }
