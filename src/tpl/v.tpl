@@ -12,6 +12,8 @@
         a {
             display: block;
             font-size: 30px;
+            text-decoration: none;
+            color: #333;
         }
     </style>
 </head>

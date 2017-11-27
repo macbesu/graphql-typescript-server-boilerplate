@@ -23,7 +23,7 @@ const mimeTypes = {
 
 module.exports = (filePath) => {
   let ext = path.extname(filePath)
-    .split('.');
+    .split('.')
     .pop()
     .toLowerCase();
 
