@@ -3,14 +3,16 @@
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
    "devDependencies": {
-      "ts-node": "6.1.1",
       "@types/node": "^10.3.2",
+      "ts-node": "6.1.1",
+      "tslint": "^5.10.0",
+      "tslint-config-prettier": "^1.13.0",
       "typescript": "2.9.1"
    },
    "dependencies": {
-      "typeorm": "0.2.7",
+      "pg": "^7.4.3",
       "reflect-metadata": "^0.1.12",
-      "pg": "^7.4.3"
+      "typeorm": "0.2.7"
    },
    "scripts": {
       "start": "ts-node src/index.ts"
