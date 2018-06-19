@@ -1,7 +1,19 @@
-function sum(a: number, b: number) {
-  return a + b;
-}
+import { request } from 'graphql-request';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+import { runServer } from '..';
+import { host } from './constants';
+  
+const email = 'iveon.cc@gmail.com';
+const password = 'matt10801';
+
+const mutation = `
+mutation {
+  register(email: '${email}', password:'${password}')
+}
+`
+
+test('Register', async () => {
+  await runServer;
+  const res = await request(host, mutation);
+  expect(res).toEqual({ register: true });
 });
