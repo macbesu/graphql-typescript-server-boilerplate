@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "nodemon --exec ts-node src/index.ts",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
   },
   "jest": {
