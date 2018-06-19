@@ -1,13 +1,13 @@
-import 'reflect-metadata';
-import { importSchema } from 'graphql-import';
-import { GraphQLServer } from 'graphql-yoga';
-import { createConnection } from 'typeorm';
-import * as path from 'path';
+import "reflect-metadata";
+import { importSchema } from "graphql-import";
+import { GraphQLServer } from "graphql-yoga";
+import { createConnection } from "typeorm";
+import * as path from "path";
 
-import { resolvers } from './resolvers';
+import { resolvers } from "./resolvers";
 
 export const runServer = async () => {
-  const typeDefs = importSchema(path.join(__dirname, './schema.graphql'));
+  const typeDefs = importSchema(path.join(__dirname, "./schema.graphql"));
 
   const server = new GraphQLServer({ typeDefs, resolvers });
   await createConnection();
