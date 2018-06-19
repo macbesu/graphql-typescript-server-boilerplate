@@ -1,29 +1,47 @@
 {
-   "name": "new-typeorm-project",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "devDependencies": {
-      "@types/bcryptjs": "^2.4.1",
-      "@types/node": "^10.3.2",
-      "gql2ts": "^1.8.0",
-      "nodemon": "^1.17.5",
-      "ts-node": "6.1.1",
-      "tslint": "^5.10.0",
-      "tslint-config-prettier": "^1.13.0",
-      "typescript": "2.9.1"
-   },
-   "dependencies": {
-      "@types/uuid": "^3.4.3",
-      "bcryptjs": "^2.4.3",
-      "graphql-import": "^0.6.0",
-      "graphql-yoga": "^1.14.8",
-      "pg": "^7.4.3",
-      "reflect-metadata": "^0.1.12",
-      "typeorm": "0.2.7",
-      "uuid": "^3.2.1"
-   },
-   "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts",
-      "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
-   }
+  "name": "new-typeorm-project",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.1",
+    "@types/jest": "^23.1.1",
+    "@types/node": "^10.3.2",
+    "gql2ts": "^1.8.0",
+    "jest": "^23.1.0",
+    "nodemon": "^1.17.5",
+    "ts-jest": "^22.4.6",
+    "ts-node": "6.1.1",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "typescript": "2.9.1"
+  },
+  "dependencies": {
+    "@types/uuid": "^3.4.3",
+    "bcryptjs": "^2.4.3",
+    "graphql-import": "^0.6.0",
+    "graphql-yoga": "^1.14.8",
+    "pg": "^7.4.3",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "0.2.7",
+    "uuid": "^3.2.1"
+  },
+  "scripts": {
+    "start": "nodemon --exec ts-node src/index.ts",
+    "test": "jest",
+    "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
 }
