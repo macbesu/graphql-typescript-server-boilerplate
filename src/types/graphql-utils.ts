@@ -1,5 +1,5 @@
 export interface ResolverMap {
-  [key: String]: {
-    [key: String]: (parent: any, args: any, context: {}, info: any) => any;
+  [key: string]: {
+    [key: string]: (parent: any, args: any, context: {}, info: any) => any;
   }
 }
