@@ -4,7 +4,7 @@ import { createConnection } from "typeorm";
 import { host } from "./constants";
 import { User } from "../entity/User";
   
-const email = "ivan1@huya.com";
+const email = "ivan2@huya.com";
 const password = "matt10801";
 
 const mutation = `
