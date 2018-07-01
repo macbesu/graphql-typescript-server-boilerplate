@@ -9,7 +9,6 @@
     "gql2ts": "^1.8.0",
     "jest": "^23.1.0",
     "nodemon": "^1.17.5",
-    "start-server-and-test": "^1.5.0",
     "ts-jest": "^22.4.6",
     "ts-node": "6.1.1",
     "tslint": "^5.10.0",
@@ -29,9 +28,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
-    "test-server": "NODE_ENV=test ts-node src/index.ts ",
-    "test": "NODE_ENV=test jest --detectOpenHandles",
-    "ci": "start-server-and-test",
+    "test": "NODE_ENV=test jest",
     "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
   },
   "jest": {

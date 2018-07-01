@@ -1,11 +1,14 @@
 import { request } from "graphql-request";
 
-import { host } from "./constants";
 import { User } from "../entity/User";
-import { createTypeormConn } from "../utils/createTypeormConn";
+import { runServer } from '../runServer';
+
+let getHost = () => '';
 
 beforeAll(async () => {
-  await createTypeormConn();
+  const app = await runServer();
+  const { port } = app.address();
+  getHost = () => `http://127.0.0.1:${port}`;
 });
   
 const email = "ivan2@huya.com";
@@ -15,10 +18,10 @@ const mutation = `
 mutation {
   register(email: "${email}", password:"${password}")
 }
-`
+`;
 
 test("Register", async () => {
-  const res = await request(host, mutation);
+  const res = await request(getHost(), mutation);
   expect(res).toEqual({ register: true });
   const users = await User.find({ where: { email } });
   expect(users).toHaveLength(1);
