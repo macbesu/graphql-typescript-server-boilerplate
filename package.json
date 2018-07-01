@@ -28,8 +28,10 @@
     "uuid": "^3.2.1"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node src/index.ts",
-    "test": "jest --detectOpenHandles",
+    "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "test-server": "NODE_ENV=test ts-node src/index.ts ",
+    "test": "NODE_ENV=test jest --detectOpenHandles",
+    "ci": "start-server-and-test",
     "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
   },
   "jest": {

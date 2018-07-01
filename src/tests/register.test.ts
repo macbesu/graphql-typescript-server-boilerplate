@@ -1,8 +1,12 @@
 import { request } from "graphql-request";
-import { createConnection } from "typeorm";
 
 import { host } from "./constants";
 import { User } from "../entity/User";
+import { createTypeormConn } from "../utils/createTypeormConn";
+
+beforeAll(async () => {
+  await createTypeormConn();
+});
   
 const email = "ivan2@huya.com";
 const password = "matt10801";
@@ -16,7 +20,6 @@ mutation {
 test("Register", async () => {
   const res = await request(host, mutation);
   expect(res).toEqual({ register: true });
-  await createConnection();
   const users = await User.find({ where: { email } });
   expect(users).toHaveLength(1);
   const user = users[0];
