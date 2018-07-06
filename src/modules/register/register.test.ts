@@ -7,6 +7,7 @@ import {
   invalidEmail, 
   passwordNotLongEnough,
 } from './errorMessages';
+import { createTypeormConn } from '../../utils/createTypeormConn';
   
 const email = 'ivan@huya.com';
 const password = 'matt10801';
@@ -19,6 +20,10 @@ mutation {
   }
 }
 `;
+
+beforeAll(async () => {
+  createTypeormConn();
+});
 
 describe("Register user", async () => {
   it('check for duplicate emails', async () => {
