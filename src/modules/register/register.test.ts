@@ -9,7 +9,7 @@ import {
 } from './errorMessages';
 import { createTypeormConn } from '../../utils/createTypeormConn';
   
-const email = 'ivan@huya.com';
+const email = 'hml@huya.com';
 const password = 'matt10801';
 
 const mutation = (e: string, p: string) => `
@@ -22,7 +22,7 @@ mutation {
 `;
 
 beforeAll(async () => {
-  createTypeormConn();
+  await createTypeormConn();
 });
 
 describe("Register user", async () => {
