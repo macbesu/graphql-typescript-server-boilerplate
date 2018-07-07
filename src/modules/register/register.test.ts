@@ -9,8 +9,8 @@ import {
 } from './errorMessages';
 import { createTypeormConn } from '../../utils/createTypeormConn';
   
-const email = 'hml@huya.com';
-const password = 'matt10801';
+const email = 'ivan@huya.com';
+const password = 'jiqirenbinbgi';
 
 const mutation = (e: string, p: string) => `
 mutation {
