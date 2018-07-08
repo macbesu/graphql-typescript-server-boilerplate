@@ -15,7 +15,7 @@ beforeAll(async () => {
   conn = await createTypeormConn();
   const user = await User.create({
     email: 'ivan@gmail.com',
-    password: 'matt10801',
+    password: 'jiqirenbinbgi',
   }).save();
   userId = user.id;
 });

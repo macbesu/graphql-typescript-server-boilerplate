@@ -8,6 +8,7 @@ import {
   passwordNotLongEnough,
 } from './errorMessages';
 import { createTypeormConn } from '../../utils/createTypeormConn';
+import { Connection } from '../../../node_modules/typeorm';
   
 const email = 'ivan@huya.com';
 const password = 'jiqirenbinbgi';
@@ -21,9 +22,14 @@ mutation {
 }
 `;
 
+let conn: Connection;
 beforeAll(async () => {
-  await createTypeormConn();
+  conn = await createTypeormConn();
 });
+
+afterAll(async () => {
+  conn.close();
+}); 
 
 describe("Register user", async () => {
   it('check for duplicate emails', async () => {
