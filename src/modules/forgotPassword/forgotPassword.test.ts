@@ -36,7 +36,7 @@ describe('logout', async () => {
     expect(await sess1.me()).toEqual(await sess2.me());
   });
 
-  test('single session', async () => {
+  test('test logging out a user', async () => {
     const client = new TestClient(process.env.TEST_HOST as string);
 
     await client.login(email, password);
