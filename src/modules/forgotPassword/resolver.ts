@@ -1,26 +1,51 @@
+import * as bcrypt from 'bcryptjs';
+
 import { ResolverMap } from "../../types/graphql-utils";
-import { userSessionIdPrefix, redisSessionPrefix } from "../../constants";
+import { User } from '../../entity/User';
+import { invalidLogin, confirmEmailError } from './../login/errorMessages';
+import { userSessionIdPrefix } from '../../constants';
+
+const errMsgResponse = [{
+  path: 'email',
+  message: invalidLogin,
+}];
 
 export const resolvers: ResolverMap = {
   Query: {
-    dummy2: () => 'bye'
+    dummy2  : () => 'bye',
   },
   Mutation: {
-    logout: async (_, __, { session, redis }) => {
-      const { userId } = session;
-      if (userId) {
-        const sessionIds = await redis.lrange(`${userSessionIdPrefix}${userId}`, 0, -1);
+    login: async (
+      _,
+      { email, password }: GQL.ILoginOnMutationArguments,
+      { session, redis, req }
+    ) => {
+      const user = await User.findOne({ where: { email, } });
 
-        const promises = [];
-        for (let i = 0; i < sessionIds.length; i += 1) {
-          promises.push(redis.del(`${redisSessionPrefix}${sessionIds[i]}`));
-        }
-        await Promise.all(promises);
-
-        return true;
+      if (!user) {
+        return errMsgResponse;
       }
 
-      return false;
+      if (!user.confirmed) {
+        return [{
+          path: 'email',
+          message: confirmEmailError,
+        }]
+      }
+
+      const passwordValid = await bcrypt.compare(password, user.password);
+
+      if (!passwordValid) {
+        return errMsgResponse;
+      }
+
+      // login successful
+      session.userId = user.id;
+      if (req.sessionID) {
+        await redis.lpush(`${userSessionIdPrefix}${user.id}`, req.sessionID);
+      }
+
+      return null;
     }
-  },
+  }
 };

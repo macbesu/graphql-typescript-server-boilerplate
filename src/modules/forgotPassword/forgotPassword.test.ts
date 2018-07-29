@@ -1,6 +1,6 @@
 import { createTypeormConn } from '../../utils/createTypeormConn';
 import { User } from '../../entity/User';
-import { Connection } from '../../../node_modules/typeorm';
+import { Connection } from 'typeorm';
 import { TestClient } from '../../utils/TestClient';
 import { createForgotPasswordLink } from '../../utils/createForgotPasswordLink';
 import * as Redis from 'ioredis';
