@@ -6,7 +6,7 @@ import {
   passwordNotLongEnough,
 } from './errorMessages';
 import { createTypeormConn } from '../../utils/createTypeormConn';
-import { Connection } from '../../../node_modules/typeorm';
+import { Connection } from 'typeorm';
 import { TestClient } from '../../utils/TestClient';
   
 const email = 'ivan@huya.com';
