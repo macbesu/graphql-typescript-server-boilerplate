@@ -72,7 +72,7 @@ describe('forgot password', async () => {
     expect(await client.forgotPasswordChange('sjojqoijdoqdw', key)).toEqual({
       data: {
         forgotPasswordChange: [{
-          path: 'newPassword',
+          path: 'key',
           message: expiredKeyError,
         }],
       },
