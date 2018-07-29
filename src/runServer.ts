@@ -29,7 +29,7 @@ export const runServer = async () => {
   server.express.use(
     new RateLimit({
       store: new RateLimitRedisStore({
-        client: redis,
+        client: redis, 
       }),
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 100, // limit each IP to 100 requests per windowMs
@@ -66,6 +66,20 @@ export const runServer = async () => {
   server.express.get('/confirm/:id', confirmEmail);
 
   await createTypeormConn();
+
+//   passport.use(new Strategy({
+//     consumerKey: process.env.TWITTER_CONSUMER_KEY as string,
+//     consumerSecret: process.env.TWITTER_CONSUMER_SECRET as string,
+//     callbackURL: "http://localhost:4000/auth/twitter/callback",
+//     includeEmail: true,
+//   },
+//   (token, tokenSecret, profile, cb) =>{
+//     User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
+
   const app = await server.start({
     cors,
     port: process.env.NODE_ENV === 'test' ? 0 : 4000,
