@@ -2,10 +2,14 @@ import { createTypeormConn } from '../../utils/createTypeormConn';
 import { User } from '../../entity/User';
 import { Connection } from '../../../node_modules/typeorm';
 import { TestClient } from '../../utils/TestClient';
+import { createForgotPasswordLink } from '../../utils/createForgotPasswordLink';
+import * as Redis from 'ioredis';
 
 let conn: Connection;
+const redis = new Redis();
 const email = 'ivan@gmail.com';
 const password = 'jiqirenbinbgi';
+const newPassword = 'djawoijdao';
 let userId: string;
 
 beforeAll(async () => {
@@ -22,38 +26,24 @@ afterAll(async () => {
   conn.close();
 });
 
-describe('logout', async () => {
-  test('multiple sessions', async () => {
+describe('forgot password', async () => {
+  test('make sure it works', async () => {
     // computer 1
-    const sess1 = new TestClient(process.env.TEST_HOST as string);
-    // computer 2
-    const sess2 = new TestClient(process.env.TEST_HOST as string);
-
-    await sess1.login(email, password);
-    await sess2.login(email, password);
-    expect(await sess1.me()).toEqual(await sess2.me());
-    await sess1.logout();
-    expect(await sess1.me()).toEqual(await sess2.me());
-  });
-
-  test('test logging out a user', async () => {
     const client = new TestClient(process.env.TEST_HOST as string);
 
-    await client.login(email, password);
+    const url = await createForgotPasswordLink('', userId, redis);
+    const parts = url.split('/');
+    const key = parts[parts.length - 1];
 
-    const res = await client.me();
-
+    const res = await client.forgotPasswordChange(newPassword, key);
     expect(res.data).toEqual({
-      me: {
-        id: userId,
-        email,
-      }
+      forgotPasswordChange: null,
     });
 
-    await client.logout();
-    
-    const res2 = await client.me();
-  
-    expect(res2.data.me).toBeNull();
+    expect(await client.login(email, newPassword)).toEqual({
+      data: {
+        login: null,
+      },
+    });
   });
 });
