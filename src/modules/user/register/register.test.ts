@@ -1,4 +1,4 @@
-import { User } from '../../entity/User';
+import { User } from '../../../entity/User';
 import * as faker from 'faker';
 
 import { 
@@ -7,9 +7,9 @@ import {
   invalidEmail, 
   passwordNotLongEnough,
 } from './errorMessages';
-import { createTypeormConn } from '../../utils/createTypeormConn';
+import { createTypeormConn } from '../../../utils/createTypeormConn';
 import { Connection } from 'typeorm';
-import { TestClient } from '../../utils/TestClient';
+import { TestClient } from '../../../utils/TestClient';
   
 const email = faker.internet.email();
 const password = faker.internet.password();

@@ -1,8 +1,8 @@
 import { invalidLogin, confirmEmailError } from './errorMessages';
-import { User } from '../../entity/User';
-import { createTypeormConn } from '../../utils/createTypeormConn';
+import { User } from '../../../entity/User';
+import { createTypeormConn } from '../../../utils/createTypeormConn';
 import { Connection } from 'typeorm';
-import { TestClient } from '../../utils/TestClient';
+import { TestClient } from '../../../utils/TestClient';
 
 const email = 'ivan@huya.com';
 const password = 'jiqirenbinbgi';

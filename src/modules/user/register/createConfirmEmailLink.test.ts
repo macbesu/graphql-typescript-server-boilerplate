@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 import { Connection } from 'typeorm';
 
 import { createConfirmEmailLink } from './createConfirmEmailLink';
-import { createTypeormConn } from '../../utils/createTypeormConn';
-import { User } from '../../entity/User';
+import { createTypeormConn } from '../../../utils/createTypeormConn';
+import { User } from '../../../entity/User';
 
 let userId = '';
 const redis = new Redis();
