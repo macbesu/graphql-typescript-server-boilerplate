@@ -7,6 +7,7 @@
     "@types/connect-redis": "^0.0.7",
     "@types/express-rate-limit": "^2.9.3",
     "@types/express-session": "^1.15.10",
+    "@types/faker": "^4.1.2",
     "@types/ioredis": "^3.2.11",
     "@types/jest": "^23.1.1",
     "@types/node": "^10.3.2",
@@ -15,6 +16,7 @@
     "@types/request-promise": "^4.1.42",
     "@types/sparkpost": "^2.1.4",
     "@types/yup": "^0.24.7",
+    "faker": "^4.1.0",
     "gql2ts": "^1.8.0",
     "jest": "^23.1.0",
     "nodemon": "^1.17.5",
@@ -60,7 +62,7 @@
     "gen-schema-types": "ts-node src/scripts/createTypes.ts"
   },
   "jest": {
-    "globalSetup": "./src/testSetup/callSetup.js",
+    "globalSetup": "./src/testUtils/callSetup.js",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },

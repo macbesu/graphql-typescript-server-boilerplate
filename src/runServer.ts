@@ -11,6 +11,7 @@ import { redis } from './redis';
 import { confirmEmail } from './routes/confirmEmail';
 import { genSchema } from "./utils/genSchema";
 import { redisSessionPrefix } from './constants';
+import { createTestConn } from './testUtils/createTestConn';
 
 const SESSION_SECRET = 'djwoajdoadwdija221';
 const RedisStore = connectRedis(session);
@@ -65,8 +66,12 @@ export const runServer = async () => {
 
   server.express.get('/confirm/:id', confirmEmail);
 
-  await createTypeormConn();
-
+  if (process.env.NODE_ENV === 'test') {
+    await createTestConn();
+  } else {
+    await createTypeormConn();
+  }
+  
 //   passport.use(new Strategy({
 //     consumerKey: process.env.TWITTER_CONSUMER_KEY as string,
 //     consumerSecret: process.env.TWITTER_CONSUMER_SECRET as string,

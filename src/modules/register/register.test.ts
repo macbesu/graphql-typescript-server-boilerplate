@@ -1,4 +1,6 @@
 import { User } from '../../entity/User';
+import * as faker from 'faker';
+
 import { 
   duplicateEmail,
   emailNotLongEnough, 
@@ -9,8 +11,8 @@ import { createTypeormConn } from '../../utils/createTypeormConn';
 import { Connection } from 'typeorm';
 import { TestClient } from '../../utils/TestClient';
   
-const email = 'ivan@huya.com';
-const password = 'jiqirenbinbgi';
+const email = faker.internet.email();
+const password = faker.internet.password();
 
 let conn: Connection;
 beforeAll(async () => {
